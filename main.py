@@ -53,8 +53,14 @@ async def second_send_welcome(message: types.Message):
     await Second.lab_second_step_one.set()
 
 
-@dp.message_handler(content_types='photo', state=Second.lab_second_step_one)
+@dp.message_handler(content_types='photo', state=Second.gradation_transformations_one)
 async def second_send_welcome(message: types.Message, state: FSMContext):
+    """"Read photo from telegram server and choose operations to do on photo.
+
+    Args:
+        message: Message from telegram update.
+        state: State from Finite State Machine.
+    """
     photo = get_max_sized_photo(message.photo)
     photo_id = photo.file_id
     file = await bot.get_file(photo_id)
@@ -89,11 +95,18 @@ async def second_send_welcome(message: types.Message, state: FSMContext):
 
 @dp.message_handler(content_types='text', state=Second.lab_second_step_two)
 async def update_photos(message: types.Message, state: FSMContext):
-    path = operations(message.text)
-    open_photo = open(path, 'rb')
+    """"Send upgraded photo, channel diagrams and set coordinates to do interpolation.
 
-    string_message = message.as_json()
-    norm_message = json.loads(string_message)
+    Args:
+        message: Message from telegram update.
+        state: State from Finite State Machine.
+    """
+    result = await state.get_data()
+    picture_path = result['base_image']
+    path = operations(message.text, picture_path, message.from_user.id)
+    if path is None:
+        await message.answer('Error! Try again!')
+        return
 
     chat_id = norm_message["chat"]["id"]
     plot_path = plot_function(message.text)
@@ -116,6 +129,12 @@ async def update_photos(message: types.Message, state: FSMContext):
 
 @dp.message_handler(content_types='text', state=Second.lab_second_step_three)
 async def make_interpolation(message: types.Message, state: FSMContext):
+    """"Draw and send plots, send histograms and image after interpolation.
+
+    Args:
+        message: Message from telegram update.
+        state: State from Finite State Machine.
+    """
     result = await state.get_data()
     image_path = result["base_image"]
     path_points, path_plot, inter_path = begin_draw_plots(message.text, image_path)
@@ -140,6 +159,11 @@ async def make_interpolation(message: types.Message, state: FSMContext):
 
 @dp.message_handler(commands=['first_lab'], state=None)
 async def first_send_welcome(message: types.Message):
+    """Process first_lab command.
+
+    Args:
+        message: Message from telegram updates.
+    """
     await message.answer("Enter the first picture:\n")
 
     # Задаем новое состояние, то есть теперь, когда пользователь будет
@@ -177,8 +201,12 @@ async def answer_q1(message: types.Message, state: FSMContext):
 
 @dp.message_handler(content_types='photo', state=First.lab_one_step_two)
 async def answer_q2(message: types.Message, state: FSMContext):
-    # получение json, что бы обращаться по индексу к ниму
-    # получение photo_id, фото, которое отправиль пользователь
+    """"Choose the channel to work.
+
+    Args:
+        message: Message from telegram updates.
+        state: State from Finite State Machine.
+    """
     photo = get_max_sized_photo(message.photo)
     photo_id = photo.file_id
     file = await bot.get_file(photo_id)
@@ -214,6 +242,12 @@ async def answer_q2(message: types.Message, state: FSMContext):
 
 @dp.message_handler(content_types='text', state=First.lab_one_step_three)
 async def new_command(message: types.Message, state: FSMContext):
+    """Choose operation to do with images.
+
+    Args:
+         message: Message from telegram updates.
+         state: State from Finite State Machine.
+    """
     await state.update_data(channel_name=message.text)
     await message.reply(text="Ok", reply_markup=ReplyKeyboardRemove())
 
@@ -238,6 +272,11 @@ async def new_command(message: types.Message, state: FSMContext):
 
 @dp.message_handler(content_types='text', state=First.lab_one_step_four)
 async def command(message: types.Message, state: FSMContext):
+    """Send result photo.
+    Args:
+         message: Message from telegram updates.
+         state: State from Finite State Machine.
+    """
     result = await state.get_data()
     rgb_message = result['channel_name']
 
