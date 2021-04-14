@@ -17,16 +17,16 @@ from config import Settings
 
 
 class First(StatesGroup):
-    lab_one_step_one = State()
-    lab_one_step_two = State()
-    lab_one_step_three = State()
-    lab_one_step_four = State()
+    work_with_images_one = State()
+    work_with_images_two = State()
+    work_with_images_three = State()
+    work_with_images_four = State()
 
 
 class Second(StatesGroup):
-    lab_second_step_one = State()
-    lab_second_step_two = State()
-    lab_second_step_three = State()
+    gradation_transformations_one = State()
+    gradation_transformations_two = State()
+    gradation_transformations_three = State()
 
 
 API_TOKEN = '1459813755:AAEIBDuZzJ6K0Ju2EAM77kbwdEfAHxR090g'
