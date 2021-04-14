@@ -137,9 +137,14 @@ async def make_interpolation(message: types.Message, state: FSMContext):
     image_path = result["base_image"]
     path_points, path_plot, inter_path = begin_draw_plots(message.text, image_path, message.from_user.id, settings)
 
-    await bot.send_photo(chat_id, file_points, caption='Your points')
-    await bot.send_photo(chat_id, file_plot, caption='Your interpolation')
-    await bot.send_photo(chat_id, file_inter_pict, caption='Your interpolate image')
+    chat_id = message.chat.id
+
+    with path_points.open('rb') as file_points, \
+            path_plot.open('rb') as file_plot, \
+            inter_path.open('rb') as file_inter_pict:
+        await bot.send_photo(chat_id, file_points, caption='Your points')
+        await bot.send_photo(chat_id, file_plot, caption='Your interpolation')
+        await bot.send_photo(chat_id, file_inter_pict, caption='Your interpolate image')
 
     paths = create_histogram(inter_path)
     media = create_media(paths)
