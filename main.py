@@ -225,7 +225,7 @@ async def answer_q2(message: types.Message, state: FSMContext):
     await First.work_with_images_three.set()
 
 
-@dp.message_handler(content_types='text', state=First.lab_one_step_three)
+@dp.message_handler(content_types='text', state=First.work_with_images_three)
 async def new_command(message: types.Message, state: FSMContext):
     """Choose operation to do with images.
 
