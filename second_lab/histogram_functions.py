@@ -14,7 +14,17 @@ def scale(first_list: np.array) -> np.array:
     return new_list
 
 
-def create_histogram(path_in_computer: str) -> tuple:
+def create_histogram(path_in_computer: str, settings: Settings, user_id: int) -> tuple:
+    """Create channel histograms for the image.
+
+    Args:
+        path_in_computer: Path for image.
+        settings: Contains main settings.
+        user_id: User id that send message.
+
+    Returns:
+        Tuple that contains four paths for histograms.
+    """
     first_image = Image.open(path_in_computer)
     r, g, b = first_image.split()
 
@@ -39,7 +49,18 @@ def create_histogram(path_in_computer: str) -> tuple:
     return all_paths
 
 
-def draw_histogram(array: np.array, name_file: str) -> str:
+def draw_histogram(array: np.array, name_file: str, settings: Settings, user_id: int) -> pathlib.Path:
+    """Draw histogram.
+
+    Args:
+        array: Numpy array of image pixels.
+        name_file: File name.
+        settings: Contains main settings.
+        user_id: User id that send message.
+
+    Returns:
+        Object that contains path for created histogram.
+    """
     height = 256
     width = 256
     color_draw = (0, 0, 0)
