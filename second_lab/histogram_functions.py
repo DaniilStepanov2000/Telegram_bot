@@ -45,7 +45,7 @@ def create_histogram(path_in_computer: str, settings: Settings, user_id: int) ->
 
     path_average = average_histogram(first_image, settings, user_id)
 
-    all_paths = (path_r, path_g, path_b, path_average)  # возвращает все пути к гистограмммам
+    all_paths = (path_r, path_g, path_b, path_average)
     return all_paths
 
 
