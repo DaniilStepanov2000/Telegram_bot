@@ -34,9 +34,6 @@ def create_histogram(path_in_computer: str, settings: Settings, user_id: int) ->
     r_array = r.histogram()
     g_array = g.histogram()
     b_array = b.histogram()
-    print(r_array[0])
-    print(g_array[0])
-    print(b_array[0])
 
     new_r_array = scale(r_array)
     new_g_array = scale(g_array)
