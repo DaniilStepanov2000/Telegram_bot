@@ -1,5 +1,4 @@
 from PIL import Image, ImageDraw
-import operator
 import numpy as np
 from typing import List
 
