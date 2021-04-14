@@ -265,9 +265,9 @@ async def command(message: types.Message, state: FSMContext):
     result = await state.get_data()
     rgb_message = result['channel_name']
 
-    path = get_way(message.text, rgb_message)  # возвращает путь, куда сохранилась картинка
-    string_message = message.as_json()
-    norm_message = json.loads(string_message)
+    first_path = result['first_name']
+    second_path = result['second_name']
+    user_id = message.from_user.id
 
     path = process_operation(message.text, rgb_message, first_path, second_path, user_id)
 
