@@ -178,8 +178,8 @@ async def answer_q1(message: types.Message, state: FSMContext):
     file = await bot.get_file(photo_id)
     file_path = file.file_path
 
-    first_name = "first_picture.jpg"
-    path_in_computer = r'C:\Users\dan-s\PycharmProjects\bot\first_picture.jpg'
+    photo_path = settings.project_static_path / f'{message.from_user.id}_first_picture.jpg'
+    await bot.download_file(file_path, photo_path)
 
     print(file)
     print(file_path)
