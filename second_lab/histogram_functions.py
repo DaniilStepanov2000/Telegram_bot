@@ -64,11 +64,11 @@ def draw_histogram(array: np.array, name_file: str, settings: Settings, user_id:
     height = 256
     width = 256
     color_draw = (0, 0, 0)
-    if name_file == 'laba2_r_hist.jpg':
+    if name_file == f'{user_id}_lab_2_r_hist.jpg':
         color_draw = (255, 0, 0)
-    if name_file == 'laba2_g_hist.jpg':
+    if name_file == f'{user_id}_lab_2_g_hist.jpg':
         color_draw = (0, 255, 0)
-    if name_file == 'laba2_b_hist.jpg':
+    if name_file == f'{user_id}_lab_2_b_hist.jpg':
         color_draw = (0, 0, 255)
 
     new_image = Image.new('RGB', (width, height), 'white')
