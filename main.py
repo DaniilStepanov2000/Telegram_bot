@@ -39,10 +39,15 @@ log = logging.getLogger(__name__)
 
 @dp.message_handler(commands=['start', 'help'], state=None)
 async def main_send_welcome(message: types.Message):
-    await message.answer("Choose one of the commands: /first_lab or /second_lab")
+    """Process start and help command.
+
+    Args:
+        message: Message from telegram update.
+    """
+    await message.answer("Choose one of the commands: \n1. /work_with_images \n2. /gradation_transformations")
 
 
-@dp.message_handler(commands=['second_lab'], state=None)
+@dp.message_handler(commands=['gradation_transformations'], state=None)
 async def second_send_welcome(message: types.Message):
     await message.answer("Enter the picture:")
     await Second.lab_second_step_one.set()
