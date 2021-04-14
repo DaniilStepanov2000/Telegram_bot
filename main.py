@@ -201,8 +201,7 @@ async def answer_q2(message: types.Message, state: FSMContext):
     file = await bot.get_file(photo_id)
     file_path = file.file_path
 
-    second_name = "second_picture.jpg"
-    path_in_computer = r'C:\Users\dan-s\PycharmProjects\bot\second_picture.jpg'
+    photo_path = settings.project_static_path / f'{message.from_user.id}_second_picture.jpg'
 
     print(file)
     print(file_path)
