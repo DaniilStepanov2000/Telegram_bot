@@ -71,9 +71,8 @@ def create_circle_mask(first_image: Image.Image) -> Image.Image:
 
     new_image = perform_operation_on_mask(first_image, circle_mask)
 
-    path_file = r'C:\Users\dan-s\PycharmProjects\bot\circle_img.jpg'
-    new_image.save(fr'{path_file}')
-    return path_file
+    return new_image
+
 
 def create_squared_mask(first_image: Image.Image) -> Image.Image:
     """Create a squared mask.
@@ -96,9 +95,7 @@ def create_squared_mask(first_image: Image.Image) -> Image.Image:
 
     new_image = perform_operation_on_mask(first_image, square_mask)
 
-    path_file = r'C:\Users\dan-s\PycharmProjects\bot\square_img.jpg'
-    new_image.save(fr'{path_file}')
-    return path_file
+    return new_image
 
 
 def width_height_rectangle(width: int, height: int) -> List[int]:
@@ -132,6 +129,4 @@ def create_rectangle(first_image: Image.Image) -> Image.Image:
 
     new_image = perform_operation_on_mask(first_image, rectangle_mask)
 
-    path_file = r'C:\Users\dan-s\PycharmProjects\bot\rectan_img.jpg'
-    new_image.save(fr'{path_file}')
-    return path_file
+    return new_image
