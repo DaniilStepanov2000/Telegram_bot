@@ -84,7 +84,7 @@ def draw_histogram(array: np.array, name_file: str, settings: Settings, user_id:
     return path_image
 
 
-def average_histogram(first_image: Image.Image) -> str:
+def average_histogram(first_image: Image.Image, settings: Settings, user_id: int) -> pathlib.Path:
     first_array = np.asarray(first_image)
 
     sum_array = np.sum(first_array, axis=2) // 3
