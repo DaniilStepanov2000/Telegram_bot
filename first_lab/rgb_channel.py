@@ -69,4 +69,5 @@ def channel_function(rgb_array: np.array, channel_string: str) -> np.array:
         'GB': channel_gb,
         'RGB': channel_rgb
     }
+    log.info('The channel was chose.')
     return map_to_channel.get(channel_string, channel_rgb)(rgb_array)
