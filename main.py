@@ -255,7 +255,7 @@ async def new_command(message: types.Message, state: FSMContext):
     await First.work_with_images_four.set()
 
 
-@dp.message_handler(content_types='text', state=First.lab_one_step_four)
+@dp.message_handler(content_types='text', state=First.work_with_images_four)
 async def command(message: types.Message, state: FSMContext):
     """Send result photo.
     Args:
