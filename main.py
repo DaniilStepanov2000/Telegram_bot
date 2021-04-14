@@ -6,11 +6,6 @@ from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters.state import StatesGroup, State
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, ReplyKeyboardRemove
-from histogram_functions import create_histogram
-from upgrade_function import operations
-from media_group import create_media
-from interpolation import begin_draw_plots
-from upgrade_function import plot_function
 
 
 from operations import get_way, get_max_sized_photo
@@ -101,7 +96,6 @@ async def update_photos(message: types.Message, state: FSMContext):
     paths = create_histogram(path)
 
     media = create_media(paths)
-
     await message.answer_media_group(media=media)
 
     await message.answer("Let's make some interpolation, enter the coordinates in range from 0 to 255:")
@@ -139,8 +133,6 @@ async def first_send_welcome(message: types.Message):
     # Задаем новое состояние, то есть теперь, когда пользователь будет
     # отвечать на вопрос мы будем считать это как ответ на этот вопрос
 
-    # await asyncio.sleep(2)
-    await First.lab_one_step_one.set()
 
 
 @dp.message_handler(content_types='photo', state=First.lab_one_step_one)
@@ -152,7 +144,6 @@ async def answer_q1(message: types.Message, state: FSMContext):
     photo = get_max_sized_photo(message.photo)
     photo_id = photo.file_id
     file = await bot.get_file(photo_id)
-    # получение пути, где лежит картинка на сервере телеграмма
     file_path = file.file_path
 
     first_name = "first_picture.jpg"
@@ -179,7 +170,6 @@ async def answer_q2(message: types.Message, state: FSMContext):
     photo = get_max_sized_photo(message.photo)
     photo_id = photo.file_id
     file = await bot.get_file(photo_id)
-    # получение пути, где лежит картинка на сервере телеграмма
     file_path = file.file_path
 
     second_name = "second_picture.jpg"
@@ -252,17 +242,6 @@ async def command(message: types.Message, state: FSMContext):
     await message.answer(f"It is {message.text}, enter /start to begin again", reply_markup=ReplyKeyboardRemove())
     await state.finish()
 
-
-# Теперь надо обработать фото, полученное от пользователя, а именно: получить id_фото и скачать его на компьютер
-# Продумать логику с машинной, сделать сохранение для второй фотографии
-# Теперь надо добавить клавиатуру
-# Разобраться с summation, чтобы мне возвращалась картинка, где была сумма
-# Подумать над клавиатурой
-# Обработка ошибок и bot description
-
-# Все работает для SUM. Вроде как
-# Теперь сделать для aver, min, max
-# Решить вопрос про маски, что с ним делать, если про каналы
 
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=True)
