@@ -79,7 +79,7 @@ def draw_histogram(array: np.array, name_file: str, settings: Settings, user_id:
             px_new_image[i, j] = color_draw
 
     final_image = ImageOps.flip(new_image)
-    path_image = r'C:\Users\dan-s\PycharmProjects\bot' + '\\' + name_file
+    path_image = settings.project_static_path / name_file
     final_image.save(path_image)
     return path_image
 
