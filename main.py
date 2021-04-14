@@ -68,12 +68,10 @@ async def second_send_welcome(message: types.Message, state: FSMContext):
 
     photo_path = settings.project_static_path / f'{message.from_user.id}_2_lab_base_photo.jpg'
 
-    paths = create_histogram(path_in_computer)
+    await state.update_data(base_image=photo_path)
+    await bot.download_file(file_path, photo_path)
 
-    string_message = message.as_json()
-    norm_message = json.loads(string_message)
-
-    chat_id = norm_message["chat"]["id"]
+    paths = create_histogram(str(photo_path), settings, message.from_user.id)
 
     media = create_media(paths)
 
