@@ -222,7 +222,7 @@ async def answer_q2(message: types.Message, state: FSMContext):
 
     await message.answer(text="Choose the channel to work:", reply_markup=new_key_board)
 
-    await First.lab_one_step_three.set()
+    await First.work_with_images_three.set()
 
 
 @dp.message_handler(content_types='text', state=First.lab_one_step_three)
