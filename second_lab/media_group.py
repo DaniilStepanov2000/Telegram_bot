@@ -1,3 +1,5 @@
+from typing import Tuple
+
 from aiogram import types
 
 
