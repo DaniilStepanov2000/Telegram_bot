@@ -6,8 +6,8 @@ import numpy as np
 from PIL import Image
 from aiogram.types import PhotoSize
 
-from first_lab.mask_operation import create_circle_mask, create_squared_mask, create_rectangle
-from first_lab.rgb_channel import channel_function
+from work_with_images.mask_operation import create_circle_mask, create_squared_mask, create_rectangle
+from work_with_images.rgb_channel import channel_function
 from typing import Optional
 
 
