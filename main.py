@@ -135,13 +135,7 @@ async def make_interpolation(message: types.Message, state: FSMContext):
     """
     result = await state.get_data()
     image_path = result["base_image"]
-    path_points, path_plot, inter_path = begin_draw_plots(message.text, image_path)
-    message_string = message.as_json()
-    norm_message = json.loads(message_string)
-    chat_id = norm_message["chat"]["id"]
-    file_points = open(path_points, 'rb')
-    file_plot = open(path_plot, 'rb')
-    file_inter_pict = open(inter_path, 'rb')
+    path_points, path_plot, inter_path = begin_draw_plots(message.text, image_path, message.from_user.id, settings)
 
     await bot.send_photo(chat_id, file_points, caption='Your points')
     await bot.send_photo(chat_id, file_plot, caption='Your interpolation')
