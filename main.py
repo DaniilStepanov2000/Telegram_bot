@@ -283,4 +283,10 @@ async def command(message: types.Message, state: FSMContext):
 
 
 if __name__ == '__main__':
-    executor.start_polling(dp, skip_updates=True)
+    log.info('Bot has been started!')
+    try:
+        executor.start_polling(dp, skip_updates=True)
+    except Exception as e:
+        log.exception(f'Exception occurred!')
+
+    log.info('Bot has been stopped!')
