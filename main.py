@@ -156,7 +156,7 @@ async def make_interpolation(message: types.Message, state: FSMContext):
 
 @dp.message_handler(commands=['work_with_images'], state=None)
 async def first_send_welcome(message: types.Message):
-    """Process first_lab command.
+    """Process work_with_images command.
 
     Args:
         message: Message from telegram updates.
