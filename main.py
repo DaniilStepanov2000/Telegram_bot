@@ -125,7 +125,7 @@ async def update_photos(message: types.Message, state: FSMContext):
     await Second.gradation_transformations_three.set()
 
 
-@dp.message_handler(content_types='text', state=Second.lab_second_step_three)
+@dp.message_handler(content_types='text', state=Second.gradation_transformations_three)
 async def make_interpolation(message: types.Message, state: FSMContext):
     """"Draw and send plots, send histograms and image after interpolation.
 
