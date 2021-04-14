@@ -1,5 +1,9 @@
 import numpy as np
 from typing import Dict, Callable
+import logging
+
+
+log = logging.getLogger(__name__)
 
 
 def channel_r(rgb_array: np.array) -> np.array:
