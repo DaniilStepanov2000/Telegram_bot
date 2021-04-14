@@ -165,8 +165,7 @@ async def first_send_welcome(message: types.Message):
     await First.work_with_images_one.set()
 
 
-
-@dp.message_handler(content_types='photo', state=First.lab_one_step_one)
+@dp.message_handler(content_types='photo', state=First.work_with_images_one)
 async def answer_q1(message: types.Message, state: FSMContext):
     # answer_1 = message.text
     # получение json() ввиде строки
