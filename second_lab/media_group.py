@@ -3,7 +3,7 @@ from typing import Tuple
 from aiogram import types
 
 
-def create_media(paths: str) -> types.MediaGroup:
+def create_media(paths: Tuple[str, str, str, str]) -> types.MediaGroup:
     media = types.MediaGroup()
 
     media.attach_photo(types.InputFile(paths[3]), caption='Average histogram')
