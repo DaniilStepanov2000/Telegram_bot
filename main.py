@@ -154,7 +154,7 @@ async def make_interpolation(message: types.Message, state: FSMContext):
     await message.answer("Enter /start to begin again")
 
 
-@dp.message_handler(commands=['first_lab'], state=None)
+@dp.message_handler(commands=['work_with_images'], state=None)
 async def first_send_welcome(message: types.Message):
     """Process first_lab command.
 
