@@ -117,8 +117,7 @@ async def update_photos(message: types.Message, state: FSMContext):
     with path.open('rb') as open_photo:
         await bot.send_photo(chat_id, open_photo)
 
-    paths = create_histogram(path)
-
+    paths = create_histogram(str(path), settings, message.from_user.id)
     media = create_media(paths)
     await message.answer_media_group(media=media)
 
