@@ -271,7 +271,9 @@ async def command(message: types.Message, state: FSMContext):
 
     path = process_operation(message.text, rgb_message, first_path, second_path, user_id)
 
-    file = open(path, 'rb')
+    if path is None:
+        await message.answer('Something is going wrong! Try again!')
+        return
 
     with path.open('rb') as file:
         await bot.send_photo(message.chat.id, file)
