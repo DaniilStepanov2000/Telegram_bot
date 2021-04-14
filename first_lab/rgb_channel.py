@@ -49,6 +49,17 @@ def channel_rgb(rgb_array: np.array) -> np.array:
 
 
 def channel_function(rgb_array: np.array, channel_string: str) -> np.array:
+    """
+    Apply channel mask to pixels of image to work with channel.
+
+    Args:
+         rgb_array: Numpy array of image pixels.
+         channel_string: Channel that to work.
+
+    Returns:
+        New array of image pixels that to work.
+    """
+    log.info('Choose image channel')
     map_to_channel: Dict[str, Callable[[tuple], tuple]] = {
         'R': channel_r,
         'G': channel_g,
