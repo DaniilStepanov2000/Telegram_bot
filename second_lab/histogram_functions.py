@@ -39,9 +39,9 @@ def create_histogram(path_in_computer: str, settings: Settings, user_id: int) ->
     new_g_array = scale(g_array)
     new_b_array = scale(b_array)
 
-    path_r = draw_histogram(new_r_array, 'laba2_r_hist.jpg')
-    path_g = draw_histogram(new_g_array, 'laba2_g_hist.jpg')
-    path_b = draw_histogram(new_b_array, 'laba2_b_hist.jpg')
+    path_r = draw_histogram(new_r_array, f'{user_id}_lab_2_r_hist.jpg', settings, user_id)
+    path_g = draw_histogram(new_g_array, f'{user_id}_lab_2_g_hist.jpg', settings, user_id)
+    path_b = draw_histogram(new_b_array, f'{user_id}_lab_2_b_hist.jpg', settings, user_id)
 
     path_average = average_histogram(first_image)
 
