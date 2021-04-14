@@ -203,10 +203,7 @@ async def answer_q2(message: types.Message, state: FSMContext):
 
     photo_path = settings.project_static_path / f'{message.from_user.id}_second_picture.jpg'
 
-    print(file)
-    print(file_path)
-    # сохранение картинки по пути
-    await bot.download_file(file_path, path_in_computer)
+    await bot.download_file(file_path, photo_path)
 
     await state.update_data(second_name=photo_path)
 
