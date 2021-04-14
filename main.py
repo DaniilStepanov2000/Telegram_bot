@@ -7,12 +7,12 @@ from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters.state import StatesGroup, State
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, ReplyKeyboardRemove
 
-from second_lab.histogram_functions import create_histogram
-from second_lab.interpolation import begin_draw_plots
-from second_lab.media_group import create_media
-from first_lab.operations import process_operation, get_max_sized_photo
-from second_lab.upgrade_function import operations
-from second_lab.upgrade_function import plot_function
+from gradation_transformations.histogram_functions import create_histogram
+from gradation_transformations.interpolation import begin_draw_plots
+from gradation_transformations.media_group import create_media
+from work_with_images.operations import process_operation, get_max_sized_photo
+from gradation_transformations.upgrade_function import operations
+from gradation_transformations.upgrade_function import plot_function
 from config import Settings
 
 
