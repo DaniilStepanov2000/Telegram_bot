@@ -1,5 +1,8 @@
+import pathlib
+
 import numpy as np
 from PIL import Image, ImageOps
+from config import Settings
 
 
 def scale(first_list: np.array) -> np.array:
