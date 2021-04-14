@@ -181,13 +181,7 @@ async def answer_q1(message: types.Message, state: FSMContext):
     photo_path = settings.project_static_path / f'{message.from_user.id}_first_picture.jpg'
     await bot.download_file(file_path, photo_path)
 
-    print(file)
-    print(file_path)
-    # сохранение картинки по пути
-    await bot.download_file(file_path, path_in_computer)
-
-    # сохраняю ответ, полученный от пользователя
-    await state.update_data(first_name=first_name)
+    await state.update_data(first_name=photo_path)
 
     await message.answer("Enter the second picture:\n")
 
