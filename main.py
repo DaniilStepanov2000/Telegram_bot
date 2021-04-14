@@ -162,9 +162,7 @@ async def first_send_welcome(message: types.Message):
         message: Message from telegram updates.
     """
     await message.answer("Enter the first picture:\n")
-
-    # Задаем новое состояние, то есть теперь, когда пользователь будет
-    # отвечать на вопрос мы будем считать это как ответ на этот вопрос
+    await First.work_with_images_one.set()
 
 
 
