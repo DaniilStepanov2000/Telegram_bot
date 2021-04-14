@@ -167,10 +167,12 @@ async def first_send_welcome(message: types.Message):
 
 @dp.message_handler(content_types='photo', state=First.work_with_images_one)
 async def answer_q1(message: types.Message, state: FSMContext):
-    # answer_1 = message.text
-    # получение json() ввиде строки
-    # получение json, что бы обращаться по индексу к ниму
-    # получение photo_id, фото, которое отправиль пользователь
+    """Save first picture path to computer.
+
+    Args:
+        message: Message from telegram updates.
+        state: State from Finite State Machine.
+    """
     photo = get_max_sized_photo(message.photo)
     photo_id = photo.file_id
     file = await bot.get_file(photo_id)
