@@ -96,6 +96,6 @@ def average_histogram(first_image: Image.Image, settings: Settings, user_id: int
         start_array[temp] = start_array[temp] + 1
 
     new_array = scale(start_array)
-    path_average = draw_histogram(new_array, 'laba2_average.jpg')
+    path_average = draw_histogram(new_array, f'{user_id}_lab_2_average.jpg', settings, user_id)
 
     return path_average
