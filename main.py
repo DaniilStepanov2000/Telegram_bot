@@ -114,7 +114,8 @@ async def update_photos(message: types.Message, state: FSMContext):
     with plot_path.open('rb') as open_plot_photo:
         await bot.send_photo(chat_id, open_plot_photo, caption=f'{message.text} function')
 
-    await bot.send_photo(chat_id, open_photo)
+    with path.open('rb') as open_photo:
+        await bot.send_photo(chat_id, open_photo)
 
     paths = create_histogram(path)
 
@@ -285,7 +286,8 @@ async def command(message: types.Message, state: FSMContext):
 
     file = open(path, 'rb')
 
-    await bot.send_photo(chat_id, file)
+    with path.open('rb') as file:
+        await bot.send_photo(message.chat.id, file)
 
     await message.answer(f"It is {message.text}, enter /start to begin again", reply_markup=ReplyKeyboardRemove())
     await state.finish()
