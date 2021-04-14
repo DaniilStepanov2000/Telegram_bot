@@ -33,8 +33,8 @@ settings = Settings.from_json(pathlib.Path('./config.json'))
 bot = Bot(token=settings.telegram_bot_token)
 dp = Dispatcher(bot, storage=MemoryStorage())
 
-bot = Bot(token=API_TOKEN)
-dp = Dispatcher(bot, storage=MemoryStorage())  # сообщения от бота
+logging.basicConfig(format="%(asctime)s %(name)s[%(levelname)s]: %(message)s", level=logging.INFO)
+log = logging.getLogger(__name__)
 
 
 @dp.message_handler(commands=['start', 'help'], state=None)
