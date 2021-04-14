@@ -146,7 +146,7 @@ async def make_interpolation(message: types.Message, state: FSMContext):
         await bot.send_photo(chat_id, file_plot, caption='Your interpolation')
         await bot.send_photo(chat_id, file_inter_pict, caption='Your interpolate image')
 
-    paths = create_histogram(inter_path)
+    paths = create_histogram(inter_path, settings, message.from_user.id)
     media = create_media(paths)
     await message.answer_media_group(media=media)
 
@@ -280,7 +280,7 @@ async def command(message: types.Message, state: FSMContext):
     string_message = message.as_json()
     norm_message = json.loads(string_message)
 
-    chat_id = norm_message["chat"]["id"]
+    path = process_operation(message.text, rgb_message, first_path, second_path, user_id)
 
     file = open(path, 'rb')
 
