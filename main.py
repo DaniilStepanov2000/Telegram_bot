@@ -188,7 +188,7 @@ async def answer_q1(message: types.Message, state: FSMContext):
     await First.work_with_images_two.set()
 
 
-@dp.message_handler(content_types='photo', state=First.lab_one_step_two)
+@dp.message_handler(content_types='photo', state=First.work_with_images_two)
 async def answer_q2(message: types.Message, state: FSMContext):
     """"Choose the channel to work.
 
