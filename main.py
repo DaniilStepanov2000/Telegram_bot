@@ -103,8 +103,10 @@ async def update_photos(message: types.Message, state: FSMContext):
         await message.answer('Error! Try again!')
         return
 
-    chat_id = norm_message["chat"]["id"]
-    plot_path = plot_function(message.text)
+    plot_path = plot_function(message.text, message.from_user.id, picture_path.parent)
+    if plot_path is None:
+        await message.answer('Error! Try again!')
+        return
 
     await message.reply('Ok', reply_markup=ReplyKeyboardRemove())
 
