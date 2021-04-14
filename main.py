@@ -50,7 +50,7 @@ async def main_send_welcome(message: types.Message):
 @dp.message_handler(commands=['gradation_transformations'], state=None)
 async def second_send_welcome(message: types.Message):
     await message.answer("Enter the picture:")
-    await Second.lab_second_step_one.set()
+    await Second.gradation_transformations_one.set()
 
 
 @dp.message_handler(content_types='photo', state=Second.gradation_transformations_one)
