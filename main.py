@@ -85,7 +85,7 @@ async def second_send_welcome(message: types.Message, state: FSMContext):
     key_board.row(first_button, second_button, third_button, four_button)
 
     await message.answer('Choose on of the operations:', reply_markup=key_board)
-    await Second.lab_second_step_two.set()
+    await Second.gradation_transformations_two.set()
 
 
 @dp.message_handler(content_types='text', state=Second.lab_second_step_two)
@@ -119,7 +119,7 @@ async def update_photos(message: types.Message, state: FSMContext):
     await message.answer_media_group(media=media)
 
     await message.answer("Let's make some interpolation, enter the coordinates in range from 0 to 255:")
-    await Second.lab_second_step_three.set()
+    await Second.gradation_transformations_three.set()
 
 
 @dp.message_handler(content_types='text', state=Second.lab_second_step_three)
@@ -190,8 +190,7 @@ async def answer_q1(message: types.Message, state: FSMContext):
 
     await message.answer("Enter the second picture:\n")
 
-    # объявляю новое состояние
-    await First.lab_one_step_two.set()
+    await First.work_with_images_two.set()
 
 
 @dp.message_handler(content_types='photo', state=First.lab_one_step_two)
@@ -262,7 +261,7 @@ async def new_command(message: types.Message, state: FSMContext):
 
     await message.answer(text="Choose:", reply_markup=key_board)
 
-    await First.lab_one_step_four.set()
+    await First.work_with_images_four.set()
 
 
 @dp.message_handler(content_types='text', state=First.lab_one_step_four)
