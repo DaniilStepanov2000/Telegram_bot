@@ -5,6 +5,15 @@ from typing import List
 
 
 def create_mask(width: int, height: int) -> Image.Image:
+    """Create a mask.
+
+    Args:
+        width: Image width.
+        height: Image height.
+
+    Returns:
+        One image that a mask.
+    """
     width = width
     height = height
 
@@ -23,6 +32,16 @@ def width_height_circle_square(width: int, height: int) -> List[int]:
 
 
 def perform_operation_on_mask(image: Image.Image, mask: Image.Image) -> Image.Image:
+    """
+    Applying a mask to an image.
+
+    Args:
+         image: The image that the mask will apply to.
+         mask: Mask for overlaying an image.
+
+    Returns:
+        One image after applying the mask to it.
+    """
     first_array = np.asarray(image, dtype=np.uint16)
     second_array = np.asarray(mask, dtype=np.uint16)
 
@@ -32,7 +51,15 @@ def perform_operation_on_mask(image: Image.Image, mask: Image.Image) -> Image.Im
     return new_image
 
 
-def create_circle_mask(first_image: Image.Image, second_image: Image.Image) -> str:
+def create_circle_mask(first_image: Image.Image) -> Image.Image:
+    """Create a circle mask.
+
+    Args:
+        first_image: Default black image.
+
+    Returns:
+        One image that is circle mask.
+    """
     width, height = first_image.size
     circle_mask = create_mask(width, height)
 
@@ -48,8 +75,15 @@ def create_circle_mask(first_image: Image.Image, second_image: Image.Image) -> s
     new_image.save(fr'{path_file}')
     return path_file
 
+def create_squared_mask(first_image: Image.Image) -> Image.Image:
+    """Create a squared mask.
 
-def create_squared_mask(first_image: Image.Image, second_image: Image.Image) -> str:
+    Args:
+         first_image: Default black image.
+
+    Returns:
+            One image that is squared mask.
+    """
     width, height = first_image.size
 
     square_mask = create_mask(width, height)
@@ -77,7 +111,15 @@ def width_height_rectangle(width: int, height: int) -> List[int]:
     return [width_rect_first, height_rect_first, width_rect_second, height_rect_second]
 
 
-def create_rectangle(first_image: Image.Image, second_image: Image.Image) -> str:
+def create_rectangle(first_image: Image.Image) -> Image.Image:
+    """Create a rectangle mask.
+
+    Args:
+        first_image: Default black image.
+
+    Returns:
+        One image that is rectangle mask.
+    """
     width, height = first_image.size
 
     rectangle_mask = create_mask(width, height)
