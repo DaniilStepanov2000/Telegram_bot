@@ -88,7 +88,7 @@ async def second_send_welcome(message: types.Message, state: FSMContext):
     await Second.gradation_transformations_two.set()
 
 
-@dp.message_handler(content_types='text', state=Second.lab_second_step_two)
+@dp.message_handler(content_types='text', state=Second.gradation_transformations_two)
 async def update_photos(message: types.Message, state: FSMContext):
     """"Send upgraded photo, channel diagrams and set coordinates to do interpolation.
 
