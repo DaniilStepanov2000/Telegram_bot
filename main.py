@@ -208,7 +208,7 @@ async def answer_q2(message: types.Message, state: FSMContext):
     # сохранение картинки по пути
     await bot.download_file(file_path, path_in_computer)
 
-    await state.update_data(second_name=second_name)
+    await state.update_data(second_name=photo_path)
 
     new_key_board = ReplyKeyboardMarkup(resize_keyboard=True)
     first_button = KeyboardButton(text="RGB")
