@@ -66,10 +66,7 @@ async def second_send_welcome(message: types.Message, state: FSMContext):
     file = await bot.get_file(photo_id)
     file_path = file.file_path
 
-    photo_name = 'laba2_base_photo.jpg'
-    path_in_computer = r'C:\Users\dan-s\PycharmProjects\bot\laba2_base_photo.jpg'
-    await state.update_data(base_image=path_in_computer)
-    await bot.download_file(file_path, path_in_computer)
+    photo_path = settings.project_static_path / f'{message.from_user.id}_2_lab_base_photo.jpg'
 
     paths = create_histogram(path_in_computer)
 
