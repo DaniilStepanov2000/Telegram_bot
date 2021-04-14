@@ -110,8 +110,9 @@ async def update_photos(message: types.Message, state: FSMContext):
 
     await message.reply('Ok', reply_markup=ReplyKeyboardRemove())
 
-    open_plot_photo = open(plot_path, 'rb')
-    await bot.send_photo(chat_id, open_plot_photo, caption=f'{message.text} function')
+    chat_id = message.chat.id
+    with plot_path.open('rb') as open_plot_photo:
+        await bot.send_photo(chat_id, open_plot_photo, caption=f'{message.text} function')
 
     await bot.send_photo(chat_id, open_photo)
 
