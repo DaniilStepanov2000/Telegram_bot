@@ -7,8 +7,13 @@ from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters.state import StatesGroup, State
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, ReplyKeyboardRemove
 
-
-from operations import get_way, get_max_sized_photo
+from second_lab.histogram_functions import create_histogram
+from second_lab.interpolation import begin_draw_plots
+from second_lab.media_group import create_media
+from first_lab.operations import process_operation, get_max_sized_photo
+from second_lab.upgrade_function import operations
+from second_lab.upgrade_function import plot_function
+from config import Settings
 
 
 class First(StatesGroup):
